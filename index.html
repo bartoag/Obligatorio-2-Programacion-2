@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadillac F1 Team</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <body>
+
+<div id="contenedorlogin">
+   
+    <img id="logocadillac" src="img/logo.png">
+
+    <div id="divcontlogin">
+        
+        <!-- LOGIN -->
+        <div class="seccionlogin">
+            <h2>Iniciar Sesión</h2>
+            <label>Usuario</label>
+            <input id="login-username" type="text" />
+
+            <label>Contraseña</label>
+            <input id="login-password" type="password" />
+
+            <button id="btn-login">Entrar</button>
+        </div>
+
+        <div class="divider-vertical"></div>
+
+        <!-- REGISTRO -->
+        <div class="seccionregistro">
+            <h2>Registrate</h2>
+
+            <label>Usuario</label>
+            <input id="reg-username" type="text" />
+
+            <label>Contraseña</label>
+            <input id="reg-password" type="password" />
+
+            <button id="btn-register">Registrarme</button>
+        </div>
+        
+    </div>
+<div id="mensaje"></div>
+<div id="f1auto">
+<img id="loginfoto" src="img/loginfoto.png">
+</div>
+</div>
+
+
+<div id="contenedorpagina">
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div id="divlogo">
+            <img id="logo" src="img/logo.png" alt="Cadillac Logo">
+        </div>
+
+        <ul id="ullinks">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Equipo</a></li>
+            <li><a href="#">Mi cuenta</a></li>
+            <li><a href="#">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <hr class="divider">
+
+    <!-- FILTROS -->
+     <div class="layout-contenedor">
+    <section id="contenedorfiltros">
+
+        <div class="filtros">
+            <h2>En Pista</h2>
+
+            <button class="botonfiltros1"onclick="filtrarEmpleados('Piloto')">Pilotos</button>
+            <button class="botonfiltros1"onclick="filtrarEmpleados('Ingeniero de Datos')">Ingenieros</button>
+            <button class="botonfiltros1"onclick="filtrarEmpleados('Mecánico de Motor')">Mecánicos</button>
+            <button class="botonfiltros1"onclick="filtrarEmpleados('todos')">Mostrar todos</button>
+
+        
+            <h2>En Fábrica</h2>
+
+            <button class="filter-btn" data-rol="Simulación">Simulación</button>
+            <button class="filter-btn" data-rol="Analista de datos">Análisis de datos</button>
+            <button class="filter-btn" data-rol="Logística">Logística</button>
+            <button class="filter-btn" data-rol="Prensa">Prensa</button>
+            <button class="filter-btn" data-rol="Finanzas">Finanzas</button>
+            <button class="filter-btn" data-rol="Electrónica">Electrónica</button>
+        </div>
+
+    </section>
+
+    <!-- CONTENEDOR EMPLEADOS -->
+    <section id="empleados-section">
+        <h2 style="color:#f1d452;">Empleados</h2>
+        <div id="modal-editar" class="modal">
+    <div class="modal-content">
+        <h2>Editar empleado</h2>
+
+        <label>Rol</label>
+        <input type="text" id="modal-rol">
+
+        <label>Salario</label>
+        <input type="number" id="modal-salario">
+
+        <label>Estado</label>
+        <select id="modal-activo">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+
+        <div class="modal-buttons">
+            <button id="btn-guardar">Guardar</button>
+            <button id="btn-cerrar">Cerrar</button>
+        </div>
+    </div>
+   </div>
+    <div id="modal-crear" class="modal">
+    <div class="modal-content">
+        <h2>Crear empleado</h2>
+
+        <label>Nombre</label>
+        <input type="text" id="new-nombre">
+
+        <label>Apellido</label>
+        <input type="text" id="new-apellido">
+
+        <label>Edad</label>
+        <input type="number" id="new-edad">
+
+        <label>Nacionalidad</label>
+        <input type="text" id="new-nacionalidad">
+
+        <label>Rol</label>
+        <input type="text" id="new-rol">
+
+        <label>Salario</label>
+        <input type="number" id="new-salario">
+
+        <label>Estado</label>
+        <select id="new-activo">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+
+        <div class="modal-buttons">
+            <button id="btn-crear">Crear</button>
+            <button id="btn-crear-cerrar">Cerrar</button>
+        </div>
+</div>
+
+</div>
+
+    <!-- Aquí JS va a insertar los empleados -->
+        <div id="empleados-list"></div>
+    </section>
+
+    <hr class="divider">
+    </div>
+    <!-- PARTNERS -->
+    <section id="partners">
+        <h2>PARTNERS</h2>
+        <div id="imglogos">
+            <img src="img/pirelli.png" alt="">
+            <img src="img/citi.png" alt="">
+            <img src="img/cognizant.png" alt="">
+            <img src="img/puma.png" alt="">
+            <img src="img/boss.png" alt="">
+            <img src="img/coinbase.png" alt="">
+            <img src="img/valvoline.png" alt="">
+            <img src="img/oakley.png" alt="">
+            <img src="img/circle.png" alt="">
+            <img src="img/pepperstone.png" alt="">
+            <img src="img/xerox.png" alt="">
+            <img src="img/servicenow.png" alt="">
+
+
+
+        </div>
+    </section>
+
+    <hr class="divider2">
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div id="sociales">
+            <img src="img/ig.png">
+            <img src="img/x.png">
+            <img src="img/fb.png">
+            <img src="img/yt.png">
+            <img src="img/linkedin.png">
+            <img src="img/tiktokicon.png">
+        </div>
+
+        <div id="linksfooter">
+            <ul>
+                <li>Navegación</li>
+                <br>
+                <li>Sobre nosotros</li>
+                <br>
+                <li>Noticias</li>
+                <br>
+                <li>Partners</li>
+                <br>
+                <li>Videos</li>
+            </ul>
+
+            <ul>
+                <li>Información</li>
+                <br>
+                <li>Contacto</li>
+                <br>
+                <li>Términos de uso</li>
+                <br>
+                <li>Política de privacidad</li>
+                <br>
+                <li>Cadillac F1 Team</li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+<script src="filters.js"></script>
+<script src="login.js"></script>
+<script src="empleados.js"></script>
+
+</body>
+</html>
