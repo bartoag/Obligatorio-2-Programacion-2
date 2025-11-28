@@ -1,50 +1,53 @@
-import {servicioCrearEmpleado,servicioObtenerEmpleados,servicioObtenerEmpleado,servicioActualizarEmpleado,servicioEliminarEmpleado
-} from "../services/empleadoService.js";
+import Empleado from "../models/empleado.js";
 
-
-
+// POST
 export const crearEmpleadoController = async (req, res) => {
     try {
-        const nuevo = await servicioCrearEmpleado(req.body);
-        res.status(201).send(nuevo);
-    } catch (e) {
-        res.status(400).send({ error: e.message });
+        const nuevo = new Empleado(req.body);
+        await nuevo.save();
+        res.status(201).json(nuevo);
+    } catch (err) {
+        res.status(500).json({ msg: "Error al crear empleado" });
     }
 };
 
+// GET LISTA
 export const obtenerEmpleadosController = async (req, res) => {
     try {
         const { userId } = req.params;
-        const empleados = await servicioObtenerEmpleados(userId);
-        res.send(empleados);
-    } catch (e) {
-        res.status(400).send({ error: e.message });
+        const empleados = await Empleado.find({ user: userId });
+        res.json(empleados);
+    } catch (err) {
+        res.status(500).json({ msg: "Error al obtener empleados" });
     }
 };
 
+// GET UNO
 export const obtenerEmpleadoController = async (req, res) => {
     try {
-        const emp = await servicioObtenerEmpleado(req.params.id);
-        res.send(emp);
-    } catch (e) {
-        res.status(404).send({ error: e.message });
+        const empleado = await Empleado.findById(req.params.id);
+        res.json(empleado);
+    } catch (err) {
+        res.status(500).json({ msg: "Error al obtener empleado" });
     }
 };
 
+// PUT
 export const actualizarEmpleadoController = async (req, res) => {
     try {
-        const actualizado = await servicioActualizarEmpleado(req.params.id, req.body);
-        res.send(actualizado);
-    } catch (e) {
-        res.status(400).send({ error: e.message });
+        await Empleado.findByIdAndUpdate(req.params.id, req.body);
+        res.json({ msg: "Empleado actualizado" });
+    } catch (err) {
+        res.status(500).json({ msg: "Error al actualizar" });
     }
 };
 
+// DELETE
 export const eliminarEmpleadoController = async (req, res) => {
     try {
-        await servicioEliminarEmpleado(req.params.id);
-        res.send({ mensaje: "Empleado eliminado" });
-    } catch (e) {
-        res.status(400).send({ error: e.message });
+        await Empleado.findByIdAndDelete(req.params.id);
+        res.json({ msg: "Empleado eliminado" });
+    } catch (err) {
+        res.status(500).json({ msg: "Error al borrar" });
     }
 };
