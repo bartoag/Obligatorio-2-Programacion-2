@@ -1,4 +1,4 @@
-let URL = "http://localhost:3000"; // cambiar luego si lo subís a Render
+let URL = " https://obligatorio-2-programacion-2-2.onrender.com"; // cambiar luego si lo subís a Render
 
 let loginContainer = document.getElementById("contenedorlogin");
 let appContainer = document.getElementById("contenedorpagina");
