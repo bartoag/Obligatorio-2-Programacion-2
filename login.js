@@ -75,12 +75,12 @@ btnLogin.addEventListener("click", async function () {
         let data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("userId", data._id);
+            localStorage.setItem("userId", data.userId);
             mostrarMensaje("Login exitoso", "ok");
 
             loginContainer.style.display = "none";
             appContainer.style.display = "block";
-            cargarEmpleados(data._id);
+            cargarEmpleados(data.userId);
 
             
 
